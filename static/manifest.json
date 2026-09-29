@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "PolyGrisGris",
+  "version": "0.1.0",
+  "description": "A self-custody wallet for Ethereum and EVM chains. Your keys stay in the pouch.",
+  "minimum_chrome_version": "111",
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" },
+  "action": {
+    "default_title": "PolyGrisGris",
+    "default_popup": "popup.html",
+    "default_icon": { "16": "icons/16.png", "32": "icons/32.png" }
+  },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://ethereum-rpc.publicnode.com/*",
+    "https://polygon-bor-rpc.publicnode.com/*",
+    "https://mainnet.base.org/*",
+    "https://arb1.arbitrum.io/*",
+    "https://mainnet.optimism.io/*",
+    "https://ethereum-sepolia-rpc.publicnode.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["inpage.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ]
+}
