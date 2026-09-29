@@ -1,0 +1,17 @@
+{
+  "name": "polygrisgris",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "PolyGrisGris: a self-custody EVM wallet browser extension (Manifest V3)",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch"
+  },
+  "dependencies": {
+    "ethers": "^6.13.4"
+  },
+  "devDependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
